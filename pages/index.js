@@ -2,6 +2,7 @@ import Image from "next/image";
 import { createClient } from "contentful";
 import Episodes from "../components/Episodes";
 import Hero from "../components/Hero";
+import Navbar from "../components/Nav";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -14,12 +15,12 @@ export async function getStaticProps() {
       cats: res.items,
     },
   };
+  
 }
 
-export default function Home({ cats }) {
+export default function Home({ cats, logo }) {
   console.log(cats);
   console.log(cats[0].fields.episodes.map((epis) => epis.fields));
-
   return (
     <div>
       <Hero
@@ -27,6 +28,7 @@ export default function Home({ cats }) {
         width={cats[0].fields.heroimg.fields.file.details.image.width}
         height={cats[0].fields.heroimg.fields.file.details.image.height}
       />
+      <Navbar />
       {cats[0].fields.episodes.map((epis) => {
         return (
           <Episodes

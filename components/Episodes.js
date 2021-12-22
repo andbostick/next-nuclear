@@ -28,6 +28,7 @@ export default function Episodes({
             grid-template-columns: 1fr 1fr 1fr;
             font-size: 12px;
             font-family: "Lucida Console", "Courier New", monospace;
+            color: white;
             border-radius: 5px;
             padding: 10px;
             margin: 1rem 1rem 1rem 1rem;

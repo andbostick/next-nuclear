@@ -27,7 +27,7 @@ let sortedCat = '';
 function checkCategory(arr) {
   arr.forEach(element => {
     // console.log(element);
-    if (element.categories === 'movies') {
+    if (element.categories === 'animes') {
        sortedCat = element; 
     }
   })

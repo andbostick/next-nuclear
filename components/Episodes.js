@@ -14,7 +14,7 @@ export default function Episodes({
         {!src ? (
           "no image available"
         ) : (
-          <Image src={"https://" + src} width={width} height={height} />
+          <Image src={"https://" + src} width='150px' height='150px' />
         )}
       </div>
       <h2 className="episode-title">{episodeTitle}</h2>

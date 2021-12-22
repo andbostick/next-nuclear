@@ -1,15 +1,30 @@
+import Link from "next/link";
+
 export default function Menu({ open }) {
   return (
     <>
       <div open={open}>
-        <a href="/">Movies</a>
-        <a href="/">Animes</a>
-        <a href="/">Misc</a>
-        <a href="/">Merch</a>
+        
+            <Link href="/">
+              <a>Movies</a>
+            </Link>
+          
+            <Link href="/animes">
+              <a>Animes</a>
+            </Link>
+          
+            <Link href="/misc">
+              <a>Misc</a>
+            </Link>
+          
+            <Link href="/merch">
+              <a>Merch</a>
+            </Link>
+          
       </div>
       <style jsx>
         {`
-              
+          
           div {
             display: flex;
             flex-direction: column;

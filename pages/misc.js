@@ -27,7 +27,7 @@ let sortedCat = '';
 function checkCategory(arr) {
   arr.forEach(element => {
     // console.log(element);
-    if (element.categories === 'animes') {
+    if (element.categories === 'misc') {
        sortedCat = element; 
     }
   })
@@ -37,7 +37,7 @@ function checkCategory(arr) {
 
 
 
-export default function Animes({ cats, logo }) {
+export default function Misc({ cats, logo }) {
   const [open, setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));

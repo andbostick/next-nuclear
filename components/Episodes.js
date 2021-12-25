@@ -18,15 +18,18 @@ export default function Episodes({
         )}
       </div>
       <h2 className="episode-title">{episodeTitle}</h2>
+      <div className="episode-details">
       <p>Episode Rating:{rating}</p>
       <p>Publish Date:{uploadDate}</p>
+      </div>
+      
 
       <style jsx>
         {`
           .episode-card {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            font-size: 12px;
+            
             font-family: "Lucida Console", "Courier New", monospace;
             color: white;
             border-radius: 5px;
@@ -39,9 +42,27 @@ export default function Episodes({
           .episode-image {
             grid-row-end: span 2;
             justify-self: center;
+            background: red;
           }
           .episode-title{
               grid-column-end: span 2;
+          }
+          
+          .episode-details{
+            grid-column-end: span 2;
+            font-size: 10px;
+            display: flex;
+            margin-top: 10px;
+          }
+
+          h2 {
+            letter-spacing: .05em;
+          }
+
+          @media(min-width:768px){
+            .episode-card {
+              margin: 1rem 5rem 1rem 5rem;
+            }
           }
         `}
       </style>

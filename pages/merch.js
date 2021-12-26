@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { useOnClickOutside } from "../components/hooks";
 import Burger from "../components/Burger";
 import Menu from "../components/Menu";
+import Navbar from "../components/Nav";
 import Image from "next/image";
 
 export default function Merch() {
@@ -14,8 +15,10 @@ export default function Merch() {
       <div ref={node}>
         <Burger open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen} />
-      </div>
-        <p>welcome to my merch</p>
+            </div>
+            
+            <p>welcome to my merch</p>
+            <Navbar />
         </div>
     )
 }

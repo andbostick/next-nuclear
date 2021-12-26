@@ -21,7 +21,7 @@ export default function Navbar() {
           <Link href="/animes">
             <a>Animes</a>
           </Link>
-
+          <div className="spacer"></div>
           <Link href="/misc">
             <a>Misc</a>
           </Link>
@@ -36,16 +36,19 @@ export default function Navbar() {
       </MediaQuery>
       <style jsx>
         {`
+          @media (max-width: 1023px) {
+          }
           .logo {
             position: relative;
             margin-bottom: 45px;
+            
           }
 
           .img {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -65%);
+            transform: translate(-50%, -50%);
           }
 
           @media (min-width: 500px) {
@@ -58,14 +61,19 @@ export default function Navbar() {
           }
 
           @media (min-width: 1024px) {
+            .spacer {
+              width: 275px;
+            }
             .nav {
-              
+              padding: 20px;
               display: flex;
               justify-content: space-around;
               color: white;
               background-color: rgba(0, 0, 0, 0.5);
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-              rgba(0, 0, 0, 0.23) 0px 3px 6px;
+              box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+                rgba(0, 0, 0, 0.23) 0px 3px 6px;
+              font-size: 40px;
+              z-index: 99;
             }
           }
         `}

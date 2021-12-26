@@ -19,8 +19,8 @@ export default function Episodes({
       </div>
       <h2 className="episode-title">{episodeTitle}</h2>
       <div className="episode-details">
-      <p>Episode Rating:{rating}</p>
-      <p>Publish Date:{uploadDate}</p>
+      <p>Episode Rating: {rating}</p>
+      <p>Publish Date: {uploadDate}</p>
       </div>
       
 
@@ -53,6 +53,7 @@ export default function Episodes({
             font-size: 10px;
             display: flex;
             margin-top: 10px;
+            gap: 10px;
           }
 
           h2 {

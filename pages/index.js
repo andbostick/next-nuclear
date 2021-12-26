@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
 import { useOnClickOutside } from "../components/hooks";
+import MediaQuery from "react-responsive";
 import Image from "next/image";
 import { createClient } from "contentful";
+import Sidebar from "../components/Sidebar";
 import Menu from "../components/Menu";
 import Burger from "../components/Burger";
 import Episodes from "../components/Episodes";
@@ -21,21 +23,17 @@ export async function getStaticProps() {
   };
 }
 
-let sortedCat = '';
+let sortedCat = "";
 
 //loops through api and returns matchinbg category
 function checkCategory(arr) {
-  arr.forEach(element => {
+  arr.forEach((element) => {
     // console.log(element);
-    if (element.categories === 'movies') {
-       sortedCat = element; 
+    if (element.categories === "movies") {
+      sortedCat = element;
     }
-  })
-  
+  });
 }
-
-
-
 
 export default function Home({ cats, logo }) {
   const [open, setOpen] = useState(false);
@@ -43,8 +41,8 @@ export default function Home({ cats, logo }) {
   useOnClickOutside(node, () => setOpen(false));
   console.log(cats);
   console.log(cats[0].fields.episodes.map((epis) => epis.fields));
-  const arr = cats.map((set) => set.fields)
-  checkCategory(arr)
+  const arr = cats.map((set) => set.fields);
+  checkCategory(arr);
   console.log(sortedCat);
   return (
     <div>
@@ -59,19 +57,67 @@ export default function Home({ cats, logo }) {
         height={sortedCat.heroimg.fields.file.details.image.height}
       />
       <Navbar />
-      {sortedCat.episodes.map((epis) => {
-        return (
-          <Episodes
-            key={epis.fields.slug}
-            episodeTitle={epis.fields.episodeTitle}
-            rating={epis.fields.rating}
-            uploadDate={epis.fields.upload}
-            src={epis.fields.thumbnail?.fields.file.url}
-            width={epis.fields.thumbnail?.fields.file.details.image.width}
-            height={epis.fields.thumbnail?.fields.file.details.image.height}
-          />
-        );
-      })}
+      <MediaQuery maxWidth={1023}>
+        {sortedCat.episodes.map((epis) => {
+          return (
+            <Episodes
+              key={epis.fields.slug}
+              episodeTitle={epis.fields.episodeTitle}
+              rating={epis.fields.rating}
+              uploadDate={epis.fields.upload}
+              src={epis.fields.thumbnail?.fields.file.url}
+              width={epis.fields.thumbnail?.fields.file.details.image.width}
+              height={epis.fields.thumbnail?.fields.file.details.image.height}
+            />
+          );
+        })}
+      </MediaQuery>
+      <MediaQuery minWidth={1024}>
+        <div className="content-container">
+          <div className="sidebar-container">
+            <div className="sidebar">
+              <Sidebar episodeData={sortedCat} />
+            </div>
+          </div>
+          <div className="episode-container">
+            {sortedCat.episodes.map((epis) => {
+              return (
+                <Episodes
+                  key={epis.fields.slug}
+                  episodeTitle={epis.fields.episodeTitle}
+                  rating={epis.fields.rating}
+                  uploadDate={epis.fields.upload}
+                  src={epis.fields.thumbnail?.fields.file.url}
+                  width={epis.fields.thumbnail?.fields.file.details.image.width}
+                  height={
+                    epis.fields.thumbnail?.fields.file.details.image.height
+                  }
+                />
+              );
+            })}
+          </div>
+        </div>
+      </MediaQuery>
+      <style jsx>
+        {`
+          .content-container {
+            display: grid;
+            grid-template-columns: 25% 1fr;
+          }
+
+          .episode-container {
+            display: flex;
+            flex-direction: column;
+          }
+          .sidebar-container {
+            display: flex;
+            flex-direction: column;
+          }
+          .sidebar {
+            height: 100%;
+          }
+        `}
+      </style>
     </div>
   );
 }

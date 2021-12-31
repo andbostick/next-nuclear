@@ -1,10 +1,12 @@
 import Link from "next/link";
-
+import Socials from "./Socials";
 export default function Menu({ open }) {
   return (
     <>
       <div open={open}>
         
+          <Socials />
+          
             <Link href="/">
               <a>Movies</a>
             </Link>

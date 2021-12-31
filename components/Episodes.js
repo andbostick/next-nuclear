@@ -4,33 +4,31 @@ export default function Episodes({
   episodeTitle,
   rating,
   uploadDate,
-  src,
-  width,
-  height,
+  description,
+  author
 }) {
+  console.log({ description });
   return (
     <div className="episode-card">
-      <div className="episode-image">
-        {!src ? (
-          "no image available"
-        ) : (
-          <Image src={"https://" + src} width='150px' height='150px' />
-        )}
+      <div className="episode-title">
+        <h2>{episodeTitle}</h2>
+        <p>_________________________</p>
+
+        {description}
       </div>
-      <h2 className="episode-title">{episodeTitle}</h2>
+
       <div className="episode-details">
-      <p>Episode Rating: {rating}</p>
-      <p>Publish Date: {uploadDate}</p>
+        <p>Author: {author}</p>
+        <p>Episode Rating: {rating}</p>
+        <p>Publish Date: {uploadDate}</p>
       </div>
-      
 
       <style jsx>
         {`
           .episode-card {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            
-            font-family: "Lucida Console", "Courier New", monospace;
+            font-family: sans-serif;
             color: white;
             border-radius: 5px;
             padding: 10px;
@@ -38,31 +36,42 @@ export default function Episodes({
             background-color: rgba(0, 0, 0, 0.5);
             box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
               rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            line-height: 1.4;
           }
-          .episode-image {
-            grid-row-end: span 2;
-            justify-self: center;
-            background: red;
-          }
-          .episode-title{
-              grid-column-end: span 2;
-          }
-          
-          .episode-details{
+
+          .episode-title {
             grid-column-end: span 2;
+
+            padding: 1rem;
+          }
+
+          .episode-details {
+            padding: 1rem;
+            grid-column-end: span 1;
             font-size: 10px;
             display: flex;
-            margin-top: 10px;
-            gap: 10px;
+            align-items: flex-end;
+            flex-direction: column;
+            font-size: .7rem;
+            font-weight: 300;
+            gap: 5px;
           }
 
           h2 {
-            letter-spacing: .05em;
+            letter-spacing: 0.05em;
+            line-height: 1;
+            margin: 0;
+            font-size: 1.7rem;
           }
 
-          @media(min-width:768px){
+          @media (min-width: 768px) {
             .episode-card {
               margin: 1rem 5rem 1rem 5rem;
+            }
+            @media (min-width: 1024px) {
+              .episode-card {
+                margin: 1rem 0 1rem 5rem;
+              }
             }
           }
         `}

@@ -40,29 +40,30 @@ export default function Navbar() {
           }
           .logo {
             position: relative;
-            margin-bottom: 45px;
+            margin-bottom: 65px;
             
           }
 
           .img {
             position: absolute;
             top: 50%;
-            left: 50%;
+            left: 52%;
             transform: translate(-50%, -50%);
           }
 
           @media (min-width: 500px) {
             .logo {
-              margin-bottom: 75px;
+              margin-bottom: 125px;
             }
           }
 
-          @media (min-width: 768px) {
-          }
-
           @media (min-width: 1024px) {
+            .logo {
+              margin-bottom: 70px;
+            }
+          }
             .spacer {
-              width: 275px;
+              width: 250px;
             }
             .nav {
               padding: 20px;
@@ -72,7 +73,7 @@ export default function Navbar() {
               background-color: rgba(0, 0, 0, 0.5);
               box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
                 rgba(0, 0, 0, 0.23) 0px 3px 6px;
-              font-size: 40px;
+              font-size: 25px;
               z-index: 99;
             }
           }

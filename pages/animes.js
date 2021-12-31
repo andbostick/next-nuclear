@@ -3,7 +3,8 @@ import { useOnClickOutside } from "../components/hooks";
 import MediaQuery from "react-responsive";
 import Image from "next/image";
 import { createClient } from "contentful";
-
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Socials from "../components/Socials";
 import Menu from "../components/Menu";
 import Burger from "../components/Burger";
 import Episodes from "../components/Episodes";
@@ -45,12 +46,7 @@ export default function Animes({ cats, logo }) {
   checkCategory(arr);
   console.log(sortedCat);
   return (
-    <div>
-      <div ref={node}>
-        <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
-      </div>
-
+    < div className="content-body">
       <Hero
         src={"https:" + sortedCat.heroimg.fields.file.url}
         width={sortedCat.heroimg.fields.file.details.image.width}
@@ -58,6 +54,10 @@ export default function Animes({ cats, logo }) {
       />
       <Navbar />
       <MediaQuery maxWidth={1023}>
+        <div ref={node}>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
         {sortedCat.episodes.map((epis) => {
           return (
             <Episodes
@@ -65,14 +65,15 @@ export default function Animes({ cats, logo }) {
               episodeTitle={epis.fields.episodeTitle}
               rating={epis.fields.rating}
               uploadDate={epis.fields.upload}
-              src={epis.fields.thumbnail?.fields.file.url}
-              width={epis.fields.thumbnail?.fields.file.details.image.width}
-              height={epis.fields.thumbnail?.fields.file.details.image.height}
+              author={epis.fields.author}
+              description={documentToReactComponents(epis.fields.description)}
+            
             />
           );
         })}
       </MediaQuery>
       <MediaQuery minWidth={1024}>
+      <Socials />
         <div className="content-container">
           <div className="sidebar-container">
             <div className="sidebar">
@@ -87,12 +88,9 @@ export default function Animes({ cats, logo }) {
                   episodeTitle={epis.fields.episodeTitle}
                   rating={epis.fields.rating}
                   uploadDate={epis.fields.upload}
-                  src={epis.fields.thumbnail?.fields.file.url}
-                  width={epis.fields.thumbnail?.fields.file.details.image.width}
-                  height={
-                    epis.fields.thumbnail?.fields.file.details.image.height
-                  }
-                />
+                  author={epis.fields.author}
+              description={documentToReactComponents(epis.fields.description)}
+            />
               );
             })}
           </div>
@@ -103,6 +101,7 @@ export default function Animes({ cats, logo }) {
           .content-container {
             display: grid;
             grid-template-columns: 25% 1fr;
+            height: 100vh
           }
 
           .episode-container {
@@ -112,10 +111,15 @@ export default function Animes({ cats, logo }) {
           .sidebar-container {
             display: flex;
             flex-direction: column;
-            
           }
           .sidebar {
             height: 100%;
+          }
+
+          @media (min-width: 1024px) {
+            .content-body {
+              margin: 0 10rem 0 10rem;
+            }
           }
         `}
       </style>

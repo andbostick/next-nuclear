@@ -1,8 +1,10 @@
 import { useState, useRef } from "react";
 import { useOnClickOutside } from "../components/hooks";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import MediaQuery from "react-responsive";
 import Image from "next/image";
 import { createClient } from "contentful";
+import Socials from "../components/Socials";
 import Sidebar from "../components/Sidebar";
 import Menu from "../components/Menu";
 import Burger from "../components/Burger";
@@ -25,7 +27,7 @@ export async function getStaticProps() {
 
 let sortedCat = "";
 
-//loops through api and returns matchinbg category
+//loops through api and returns matching category
 function checkCategory(arr) {
   arr.forEach((element) => {
     // console.log(element);
@@ -39,25 +41,25 @@ export default function Home({ cats, logo }) {
   const [open, setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-  console.log(cats);
-  console.log(cats[0].fields.episodes.map((epis) => epis.fields));
+  
   const arr = cats.map((set) => set.fields);
   checkCategory(arr);
   console.log(sortedCat);
   return (
-    <div>
-      <div ref={node}>
-        <Burger open={open} setOpen={setOpen} />
-        <Menu open={open} setOpen={setOpen} />
-      </div>
-
+    <div className="content-body">
       <Hero
         src={"https:" + sortedCat.heroimg.fields.file.url}
         width={sortedCat.heroimg.fields.file.details.image.width}
         height={sortedCat.heroimg.fields.file.details.image.height}
       />
+      
       <Navbar />
       <MediaQuery maxWidth={1023}>
+      
+        <div ref={node}>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
         {sortedCat.episodes.map((epis) => {
           return (
             <Episodes
@@ -65,14 +67,14 @@ export default function Home({ cats, logo }) {
               episodeTitle={epis.fields.episodeTitle}
               rating={epis.fields.rating}
               uploadDate={epis.fields.upload}
-              src={epis.fields.thumbnail?.fields.file.url}
-              width={epis.fields.thumbnail?.fields.file.details.image.width}
-              height={epis.fields.thumbnail?.fields.file.details.image.height}
+              author={epis.fields.author}
+              description={documentToReactComponents(epis.fields.description)}
             />
           );
         })}
       </MediaQuery>
       <MediaQuery minWidth={1024}>
+      <Socials />
         <div className="content-container">
           <div className="sidebar-container">
             <div className="sidebar">
@@ -81,18 +83,18 @@ export default function Home({ cats, logo }) {
           </div>
           <div className="episode-container">
             {sortedCat.episodes.map((epis) => {
+              console.log(documentToReactComponents(epis.fields.description))
               return (
+                
                 <Episodes
                   key={epis.fields.slug}
                   episodeTitle={epis.fields.episodeTitle}
                   rating={epis.fields.rating}
                   uploadDate={epis.fields.upload}
-                  src={epis.fields.thumbnail?.fields.file.url}
-                  width={epis.fields.thumbnail?.fields.file.details.image.width}
-                  height={
-                    epis.fields.thumbnail?.fields.file.details.image.height
-                  }
-                />
+                  author={epis.fields.author}
+                  description={documentToReactComponents(epis.fields.description)}
+                  />
+                  
               );
             })}
           </div>
@@ -103,6 +105,7 @@ export default function Home({ cats, logo }) {
           .content-container {
             display: grid;
             grid-template-columns: 25% 1fr;
+            height: 100vh
           }
 
           .episode-container {
@@ -115,6 +118,12 @@ export default function Home({ cats, logo }) {
           }
           .sidebar {
             height: 100%;
+          }
+
+          @media (min-width: 1024px) {
+            .content-body {
+              margin: 0 10rem 0 10rem;
+            }
           }
         `}
       </style>

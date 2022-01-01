@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import { useOnClickOutside } from "../components/hooks";
 import MediaQuery from "react-responsive";
-import Image from "next/image";
+
 import { createClient } from "contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import Socials from "../components/Socials";
+
 import Menu from "../components/Menu";
 import Burger from "../components/Burger";
 import Episodes from "../components/Episodes";
@@ -73,7 +73,7 @@ export default function Animes({ cats, logo }) {
         })}
       </MediaQuery>
       <MediaQuery minWidth={1024}>
-      <Socials />
+      
         <div className="content-container">
           <div className="sidebar-container">
             <div className="sidebar">

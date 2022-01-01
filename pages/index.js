@@ -2,9 +2,9 @@ import { useState, useRef } from "react";
 import { useOnClickOutside } from "../components/hooks";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import MediaQuery from "react-responsive";
-import Image from "next/image";
+
 import { createClient } from "contentful";
-import Socials from "../components/Socials";
+
 import Sidebar from "../components/Sidebar";
 import Menu from "../components/Menu";
 import Burger from "../components/Burger";
@@ -74,7 +74,7 @@ export default function Home({ cats, logo }) {
         })}
       </MediaQuery>
       <MediaQuery minWidth={1024}>
-      <Socials />
+      
         <div className="content-container">
           <div className="sidebar-container">
             <div className="sidebar">

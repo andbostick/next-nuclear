@@ -3,7 +3,6 @@ import { useOnClickOutside } from "../components/hooks";
 import MediaQuery from "react-responsive";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-import Socials from "../components/Socials";
 import { createClient } from "contentful";
 import Sidebar from "../components/Sidebar";
 import Menu from "../components/Menu";
@@ -73,7 +72,6 @@ export default function Misc({ cats, logo }) {
         })}
       </MediaQuery>
       <MediaQuery minWidth={1024}>
-      <Socials />
         <div className="content-container">
           <div className="sidebar-container">
             <div className="sidebar">

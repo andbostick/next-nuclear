@@ -14,21 +14,27 @@ export default function Navbar() {
       </MediaQuery>
       <MediaQuery minWidth={1024}>
         <div className="nav">
-          <Link href="/">
-            <a>Movies</a>
-          </Link>
-
-          <Link href="/animes">
-            <a>Animes</a>
-          </Link>
+          <div className="item">
+            <Link href="/">
+              <a>Movies</a>
+            </Link>
+          </div>
+          <div className="item">
+            <Link href="/animes">
+              <a>Animes</a>
+            </Link>
+          </div>
           <div className="spacer"></div>
-          <Link href="/misc">
-            <a>Misc</a>
-          </Link>
-
-          <Link href="/merch">
-            <a>Merch</a>
-          </Link>
+          <div className="item">
+            <Link href="/misc">
+              <a>Misc</a>
+            </Link>
+          </div>
+          <div className="item">
+            <Link href="/merch">
+              <a>Merch</a>
+            </Link>
+          </div>
         </div>
         <div className="img">
           <Image src={logo} height="275px" width="300px" />
@@ -76,6 +82,13 @@ export default function Navbar() {
               font-size: 25px;
               z-index: 99;
             }
+            .item:hover {
+              text-decoration: underline;
+              
+              transition: all 0.9s ease-in-out;
+            }
+            
+            
           }
         `}
       </style>

@@ -8,11 +8,11 @@ export default function Socials() {
   return (
     <div className="social-bar">
       <div className="icons">
-        <a href="https://www.tiktok.com/@nuclearhangover" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTiktok} /></a>
-        <a href="https://www.instagram.com/nuclearhangover/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} /></a>
-        <a><FontAwesomeIcon icon={faDiscord} /></a>
-        <a href="https://www.youtube.com/channel/UCX3DxT-TAZeOYLoWMuFWFkQ/about" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faYoutube} /></a>
-        <a href="https://www.patreon.com/nuclearhangover" ><FontAwesomeIcon icon={faPatreon} /></a>
+        <a className="icon" href="https://www.tiktok.com/@nuclearhangover" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTiktok} /></a>
+        <a className="icon" href="https://www.instagram.com/nuclearhangover/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faInstagram} /></a>
+        <a className="icon"><FontAwesomeIcon icon={faDiscord} /></a>
+        <a className="icon" href="https://www.youtube.com/channel/UCX3DxT-TAZeOYLoWMuFWFkQ/about" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faYoutube} /></a>
+        <a className="icon" href="https://www.patreon.com/nuclearhangover" ><FontAwesomeIcon icon={faPatreon} /></a>
       </div>
       <style jsx>
         {`
@@ -33,6 +33,15 @@ export default function Socials() {
             transform: translate(-53%, -28%);
             height: 80px;
             width: 40px;
+            transition: top ease 0.5s
+          }
+          .icon {
+            position: relative;
+            top: 0;
+            transition: top ease 0.5s;
+          }
+          .icon:hover {
+            top: -10px;
           }
         `}
       </style>

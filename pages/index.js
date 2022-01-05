@@ -104,7 +104,7 @@ export default function Home({ cats, logo }) {
         {`
           .content-container {
             display: grid;
-            grid-template-columns: 25% 1fr;
+            grid-template-columns: 30% 1fr;
             height: 100vh
           }
 
@@ -122,7 +122,7 @@ export default function Home({ cats, logo }) {
 
           @media (min-width: 1024px) {
             .content-body {
-              margin: 0 10rem 0 10rem;
+              margin: 0 6rem 0 6rem;
             }
           }
         `}

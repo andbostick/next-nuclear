@@ -59,7 +59,7 @@ export default function Socials() {
             top: 40%;
             left: 10%;
             transform: translate(-40%, -28%);
-            height: 80px;
+            height: 100px;
             width: 40px;
             transition: top ease 0.5s;
           }
@@ -70,7 +70,7 @@ export default function Socials() {
           }
           .icon:hover {
             top: -10px;
-            color: black;
+            color: grey;
           }
         `}
       </style>

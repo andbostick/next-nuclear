@@ -24,12 +24,17 @@ export default function Socials() {
         >
           <FontAwesomeIcon icon={faInstagram} />
         </a>
-        <a className="icon">
+        <a
+          className="icon"
+          href="https://www.instagram.com/nuclearhangover/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FontAwesomeIcon icon={faDiscord} />
         </a>
         <a
           className="icon"
-          href="https://www.youtube.com/channel/UCX3DxT-TAZeOYLoWMuFWFkQ/about"
+          href="https://discord.gg/nhQHWdp4gX"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -49,7 +54,7 @@ export default function Socials() {
           .icons {
             display: flex;
             position: absolute;
-            color:white;
+            color: white;
             gap: 20px;
             top: 40%;
             left: 10%;

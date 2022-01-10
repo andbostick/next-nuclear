@@ -98,29 +98,29 @@ export default function Animes({ cats, logo }) {
       </MediaQuery>
       <style jsx>
         {`
-          .content-container {
-            display: grid;
-            grid-template-columns: 25% 1fr;
-            height: 100vh
-          }
+        .content-container {
+          display: grid;
+          grid-template-columns: 30% 1fr;
+          height: 100vh
+        }
 
-          .episode-container {
-            display: flex;
-            flex-direction: column;
-          }
-          .sidebar-container {
-            display: flex;
-            flex-direction: column;
-          }
-          .sidebar {
-            height: 100%;
-          }
+        .episode-container {
+          display: flex;
+          flex-direction: column;
+        }
+        .sidebar-container {
+          display: flex;
+          flex-direction: column;
+        }
+        .sidebar {
+          height: 100%;
+        }
 
-          @media (min-width: 1024px) {
-            .content-body {
-              margin: 0 10rem 0 10rem;
-            }
+        @media (min-width: 1024px) {
+          .content-body {
+            margin: 0 6rem 0 6rem;
           }
+        }
         `}
       </style>
     </div>

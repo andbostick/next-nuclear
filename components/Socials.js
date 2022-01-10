@@ -26,7 +26,7 @@ export default function Socials() {
         </a>
         <a
           className="icon"
-          href="https://www.instagram.com/nuclearhangover/"
+          href="https://discord.gg/nhQHWdp4gX"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -34,7 +34,7 @@ export default function Socials() {
         </a>
         <a
           className="icon"
-          href="https://discord.gg/nhQHWdp4gX"
+          href="https://www.youtube.com/channel/UCX3DxT-TAZeOYLoWMuFWFkQ/about"
           target="_blank"
           rel="noopener noreferrer"
         >

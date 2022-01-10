@@ -1,14 +1,22 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useOnClickOutside } from "../components/hooks";
+import PaymentForm, {loadSquareSdk} from "../components/PaymentForm";
 import Burger from "../components/Burger";
 import Menu from "../components/Menu";
 import Navbar from "../components/Nav";
-import Image from "next/image";
 
 export default function Merch() {
+  const [squareStatus, setSquareStatus] = useState(null)
     const [open, setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
+  useEffect(() => {
+    loadSquareSdk()
+      .then(() => {
+        setSquareStatus("SUCCESS")
+      })
+      .catch(() => setSquareStatus("ERROR"))
+  }, []) // on mount, add the js script dynamically
     return (
         
         <div>
@@ -18,7 +26,12 @@ export default function Merch() {
             </div>
             
             <p>welcome to my merch</p>
-            <Navbar />
+        <Navbar />
+        {squareStatus === "ERROR" &&
+        "Failed to load SquareSDK. Please refresh the page."}
+      {squareStatus === "SUCCESS" && (
+        <PaymentForm paymentForm={window.SqPaymentForm} />
+      )}
         </div>
     )
 }

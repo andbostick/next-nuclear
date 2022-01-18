@@ -19,8 +19,8 @@ export default function Menu({ open }) {
               <a>Misc</a>
             </Link>
           
-            <Link href="/merch">
-              <a>Merch</a>
+            <Link href="/store">
+              <a>Store</a>
             </Link>
           
       </div>

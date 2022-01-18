@@ -31,8 +31,8 @@ export default function Navbar() {
             </Link>
           </div>
           <div className="item">
-            <Link href="/merch">
-              <a>Merch</a>
+            <Link href="/store">
+              <a>Store</a>
             </Link>
           </div>
         </div>

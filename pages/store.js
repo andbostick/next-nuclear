@@ -37,7 +37,9 @@ export default function Store({ store }) {
         </div>
 </MediaQuery>
       <Navbar />
-      <h1>Check Back Soon For Merch </h1>
+      <div className="store-container">
+      <h1>Check Back Soon For Merch Store</h1>
+      </div>
       <style jsx>{`
       .store-container{
         margin: 5rem;

@@ -40,11 +40,10 @@ export default function Misc({ cats, logo }) {
   const [open, setOpen] = useState(false);
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-  console.log(cats);
-  console.log(cats[0].fields.episodes.map((epis) => epis.fields));
+  
   const arr = cats.map((set) => set.fields);
   checkCategory(arr);
-  console.log(sortedCat);
+  
   return (
     <div className="content-body">
       <Hero

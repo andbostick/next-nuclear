@@ -30,7 +30,7 @@ let sortedCat = "";
 //loops through api and returns matchinbg category
 function checkCategory(arr) {
   arr.forEach((element) => {
-    // console.log(element);
+    
     if (element.categories === "animes") {
       sortedCat = element;
     }
@@ -44,7 +44,7 @@ export default function Animes({ cats, logo }) {
 
   const arr = cats.map((set) => set.fields);
   checkCategory(arr);
-  console.log(sortedCat);
+  
   return (
     < div className="content-body">
       <Hero

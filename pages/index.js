@@ -73,9 +73,7 @@ export default function Home({ cats, logo }) {
         </div>
         <Search search={search} handleSearchChange={handleSearchChange} />
         {filtered.map((epis) => {
-          {
-            console.log(epis.fields.episodeTitle);
-          }
+          
 
           return (
             <Episodes
@@ -100,7 +98,7 @@ export default function Home({ cats, logo }) {
           <div className="episode-container">
           <Search search={search} handleSearchChange={handleSearchChange} />
             {filtered.map((epis) => {
-              console.log(documentToReactComponents(epis.fields.description));
+             
               return (
                 <Episodes
                   key={epis.fields.slug}

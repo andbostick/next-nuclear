@@ -54,7 +54,7 @@ export default function Socials() {
           .icons {
             display: flex;
             position: absolute;
-            color: white;
+            color: black;
             gap: 20px;
             top: 40%;
             left: 10%;
@@ -71,6 +71,11 @@ export default function Socials() {
           .icon:hover {
             top: -10px;
             color: grey;
+          }
+          @media(min-width:1024px){
+            .icons{
+              color: white;
+            }
           }
         `}
       </style>

@@ -11,6 +11,7 @@ import Burger from "../components/Burger";
 import Episodes from "../components/Episodes";
 import Hero from "../components/Hero";
 import Navbar from "../components/Nav";
+import Search from "../components/Search";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -30,7 +31,6 @@ let sortedCat = "";
 //loops through api and returns matching category
 function checkCategory(arr) {
   arr.forEach((element) => {
-    // console.log(element);
     if (element.categories === "movies") {
       sortedCat = element;
     }
@@ -39,12 +39,22 @@ function checkCategory(arr) {
 
 export default function Home({ cats, logo }) {
   const [open, setOpen] = useState(false);
+  const [search, setNewSearch] = useState("");
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
-  
   const arr = cats.map((set) => set.fields);
   checkCategory(arr);
-  console.log(sortedCat);
+
+  const handleSearchChange = (e) => {
+    setNewSearch(e.target.value);
+  };
+
+  const filtered = !search
+    ? sortedCat.episodes
+    : sortedCat.episodes.filter((epis) =>
+        epis.fields.episodeTitle.toLowerCase().includes(search.toLowerCase())
+      );
+
   return (
     <div className="content-body">
       <Hero
@@ -52,15 +62,21 @@ export default function Home({ cats, logo }) {
         width={sortedCat.heroimg.fields.file.details.image.width}
         height={sortedCat.heroimg.fields.file.details.image.height}
       />
-      
+
       <Navbar />
+     
+
       <MediaQuery maxWidth={1023}>
-      
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </div>
-        {sortedCat.episodes.map((epis) => {
+        <Search search={search} handleSearchChange={handleSearchChange} />
+        {filtered.map((epis) => {
+          {
+            console.log(epis.fields.episodeTitle);
+          }
+
           return (
             <Episodes
               key={epis.fields.slug}
@@ -73,8 +89,8 @@ export default function Home({ cats, logo }) {
           );
         })}
       </MediaQuery>
+
       <MediaQuery minWidth={1024}>
-      
         <div className="content-container">
           <div className="sidebar-container">
             <div className="sidebar">
@@ -82,19 +98,20 @@ export default function Home({ cats, logo }) {
             </div>
           </div>
           <div className="episode-container">
-            {sortedCat.episodes.map((epis) => {
-              console.log(documentToReactComponents(epis.fields.description))
+          <Search search={search} handleSearchChange={handleSearchChange} />
+            {filtered.map((epis) => {
+              console.log(documentToReactComponents(epis.fields.description));
               return (
-                
                 <Episodes
                   key={epis.fields.slug}
                   episodeTitle={epis.fields.episodeTitle}
                   rating={epis.fields.rating}
                   uploadDate={epis.fields.upload}
                   author={epis.fields.author}
-                  description={documentToReactComponents(epis.fields.description)}
-                  />
-                  
+                  description={documentToReactComponents(
+                    epis.fields.description
+                  )}
+                />
               );
             })}
           </div>
@@ -105,7 +122,8 @@ export default function Home({ cats, logo }) {
           .content-container {
             display: grid;
             grid-template-columns: 30% 1fr;
-            height: 100vh
+            height: 100vh;
+            margin-top: 8rem;
           }
 
           .episode-container {
@@ -122,7 +140,7 @@ export default function Home({ cats, logo }) {
 
           @media (min-width: 1024px) {
             .content-body {
-              margin: 0 6rem 0 6rem;
+              margin: 0 10rem 0 10rem;
             }
           }
         `}

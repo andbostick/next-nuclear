@@ -53,7 +53,7 @@ export default function Navbar() {
           .img {
             position: absolute;
             top: 50%;
-            left: 52%;
+            left: 50%;
             transform: translate(-50%, -50%);
           }
 

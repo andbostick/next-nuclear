@@ -46,7 +46,7 @@ export default function Navbar() {
           }
           .logo {
             position: relative;
-            margin-bottom: 65px;
+            margin-bottom: 100px;
             
           }
 
